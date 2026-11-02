@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mi bitácora 2026 · Semiótica Aplicada</title>
+  <meta name="description" content="Cuaderno virtual de Semiótica Aplicada, Com 1, Prof. Consuelo MOISSET. Alumna: Centeno Velázquez, Lourdes Abril.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/stPageFlip.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="is-closed">
+  <header class="header">
+    <div class="header__titles">
+      <h1 class="header__title">Mi bitácora 2026</h1>
+      <div class="header__subtitle" aria-hidden="true">
+        <p class="header__subject" data-fly="subject">Semiótica Aplicada</p>
+        <p class="header__info" data-fly="course">Com 1 - Prof. Consuelo MOISSET</p>
+        <p class="header__info" data-fly="student">Alumna: Centeno Velázquez, Lourdes Abril</p>
+      </div>
+    </div>
+    <div class="header__actions">
+      <button class="chip" id="btn-zoom" type="button" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg>
+        <span>Ampliar</span>
+      </button>
+      <button class="chip chip--accent" id="btn-index" type="button" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        <span>Índice</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <div class="shift" id="shift">
+      <div class="turn" id="turn">
+        <div id="book" class="book">
+          <!-- Tapa -->
+          <div class="page page--cover" data-density="hard">
+            <div class="cover">
+              <p class="cover__subject" data-fly="subject">Semiótica Aplicada</p>
+              <div class="cover__info">
+                <p data-fly="course">Com 1 - Prof. Consuelo MOISSET</p>
+                <p data-fly="student">Alumna: Centeno Velázquez, Lourdes Abril</p>
+              </div>
+            </div>
+          </div>
+          <!-- Interior de la tapa -->
+          <div class="page page--inner" data-density="hard"><div class="inner"></div></div>
+
+          <!-- Las hojas del cuaderno se insertan desde js/app.js -->
+
+          <!-- Interior de la contratapa -->
+          <div class="page page--inner page--inner-back" data-density="hard"><div class="inner"></div></div>
+          <!-- Contratapa -->
+          <div class="page page--cover page--back" data-density="hard"><div class="cover cover--plain"></div></div>
+        </div>
+
+        <button class="cover-hit" id="cover-hit" type="button" aria-label="Abrir el cuaderno"></button>
+        <button class="arrow arrow--prev" id="btn-prev" type="button" aria-label="Volver a la hoja anterior">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <button class="arrow arrow--next" id="btn-next" type="button" aria-label="Pasar a la hoja siguiente">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+    <p class="hint" id="hint">Tocá la tapa para abrir el cuaderno</p>
+  </main>
+
+  <!-- Índice (aparece una vez leído todo el cuaderno) -->
+  <div class="panel" id="index-panel" hidden>
+    <div class="panel__backdrop" data-close></div>
+    <section class="panel__sheet" role="dialog" aria-modal="true" aria-labelledby="index-title">
+      <div class="panel__head">
+        <h2 id="index-title">Índice</h2>
+        <button class="icon-btn" type="button" data-close aria-label="Cerrar índice">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <p class="panel__lead">Elegí una hoja para ir directo a ella.</p>
+      <ol class="index-grid" id="index-grid"></ol>
+    </section>
+  </div>
+
+  <!-- Visor ampliado para leer cómodo -->
+  <div class="viewer" id="viewer" hidden>
+    <div class="viewer__bar">
+      <span id="viewer-label"></span>
+      <div class="viewer__tools">
+        <button class="icon-btn" type="button" id="viewer-prev" aria-label="Hoja anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="icon-btn" type="button" id="viewer-next" aria-label="Hoja siguiente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button class="icon-btn" type="button" id="viewer-close" aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+    </div>
+    <div class="viewer__scroll" id="viewer-scroll">
+      <img id="viewer-img" alt="">
+    </div>
+  </div>
+
+  <script src="assets/vendor/page-flip.browser.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
