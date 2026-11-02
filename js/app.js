@@ -8,7 +8,6 @@
   // La página 1 del PDF es la tapa; las hojas del cuaderno son las páginas 2 a 10.
   var TOTAL_SHEETS = 9; // cantidad de hojas (sin contar la tapa)
   var RATIO = 1600 / 2263; // ancho / alto de cada hoja (A4)
-  var STORAGE_KEY = 'mi-bitacora-2026:leido';
 
   var pad = function (n) { return String(n).padStart(2, '0'); };
   // n = número de hoja (1..TOTAL_SHEETS) → página n + 1 del PDF
@@ -192,8 +191,9 @@
 
   /* ---------- Estados: front (tapa) · open · back (contratapa) ---------- */
   var state = 'front';
+  // El índice aparece recién cuando se termina de leer el cuaderno, en cada visita (no se guarda).
   var unlocked = false;
-  try { unlocked = localStorage.getItem(STORAGE_KEY) === '1'; } catch (e) {}
+  try { localStorage.removeItem('mi-bitacora-2026:leido'); } catch (e) {} // limpia lo guardado por la versión anterior
 
   function setState(next) {
     state = next;
@@ -216,13 +216,9 @@
   }
 
   function unlockIndex() {
-    if (!unlocked) {
-      unlocked = true;
-      try { localStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
-    }
+    unlocked = true;
     btnIndex.hidden = false;
   }
-  if (unlocked) btnIndex.hidden = false;
 
   var backTimer = null;
   function sync() {
