@@ -6,7 +6,7 @@ Sitio estático hecho con HTML, CSS y JavaScript, sin pasos de compilación.
 
 ## Cómo funciona
 
-- Arranca con la tapa del cuaderno y el título fijo **Mi bitácora 2026** arriba a la izquierda.
+- Arranca con la tapa (página 1 del PDF) y el título fijo **Mi bitácora 2026** arriba a la izquierda. El fondo, el título y la contratapa siguen la estética de la tapa (papel crema, violeta, Abril Fatface y DM Mono).
 - Al tocar la tapa, el cuaderno se abre y los datos de la tapa viajan animados hasta el título.
 - Las hojas se pasan con efecto de papel real: con las flechas de las esquinas inferiores, arrastrando la esquina de la hoja, deslizando en el celular o con las flechas del teclado.
 - Al terminar, el cuaderno se cierra y muestra la contratapa (lisa); a los pocos segundos, o al tocarla, vuelve a la tapa.
@@ -18,9 +18,9 @@ Sitio estático hecho con HTML, CSS y JavaScript, sin pasos de compilación.
 
 ```
 index.html               página
-css/styles.css           estilos (fuente Nunito Sans)
+css/styles.css           estilos
 js/app.js                lógica del cuaderno
-assets/paginas/          una imagen por hoja del PDF (pagina-01.webp … pagina-10.webp)
+assets/paginas/          una imagen por página del PDF (pagina-01.webp es la tapa, 02 … 10 son las hojas)
 assets/miniaturas/       miniaturas para el índice
 assets/vendor/           StPageFlip 2.0.7 (licencia MIT), la librería del paso de hojas
 ```
@@ -28,7 +28,7 @@ assets/vendor/           StPageFlip 2.0.7 (licencia MIT), la librería del paso 
 ## Cambiar las hojas
 
 1. Exportar cada página del PDF como imagen (1600 px de ancho, formato A4 vertical) con el nombre `pagina-XX.webp` en `assets/paginas/` y una copia chica en `assets/miniaturas/`.
-2. Si cambia la cantidad de hojas, actualizar `TOTAL_SHEETS` al principio de `js/app.js`.
+2. `pagina-01.webp` se usa como tapa. Si cambia la cantidad de hojas, actualizar `TOTAL_SHEETS` (hojas sin contar la tapa) al principio de `js/app.js`.
 
 ## Probar en la compu
 
