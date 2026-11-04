@@ -151,7 +151,7 @@ body.side .stage { padding-left: 310px; }
 
 /* Interior de la tapa y contratapa: mismo papel de la tapa */
 .inner, .back { background: var(--grain), var(--paper); }
-.inner { background: var(--grain), #dcd6c7; }
+.inner { background: var(--grain), #f5f2ea; }
 .back__frame { position: absolute; inset: 3.2%; border: 1px solid rgba(26,26,26,.7); }
 .back .dots { position: absolute; right: 9%; bottom: 7.5%; gap: calc(var(--pw) * .012); }
 .back .dots i { width: calc(var(--pw) * .028); height: calc(var(--pw) * .028); }

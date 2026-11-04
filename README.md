@@ -20,7 +20,7 @@ Sitio estático hecho con HTML, CSS y JavaScript, sin pasos de compilación.
 index.html               página
 css/styles.css           estilos
 js/app.js                lógica del cuaderno
-assets/paginas/          una imagen por página del PDF (pagina-01.webp es la tapa, 02 … 10 son las hojas)
+assets/paginas/          una imagen por página del PDF (pagina-01.webp es la tapa, 02 … 19 son las hojas)
 assets/miniaturas/       miniaturas para el índice
 assets/vendor/           StPageFlip 2.0.7 (licencia MIT), la librería del paso de hojas
 ```
