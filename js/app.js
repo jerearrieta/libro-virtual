@@ -235,7 +235,8 @@
     clearTimeout(backTimer);
     if (idx === 0) {
       setState('front');
-      fly('in');
+      // Una vez terminado el cuaderno, los datos quedan fijos en el título (como el índice)
+      if (!unlocked) fly('in');
       requestAnimationFrame(cacheCoverRects);
     } else if (idx >= lastIndex()) {
       setState('back');
@@ -258,7 +259,7 @@
   });
   // Si el usuario suelta la tapa sin abrirla, los textos vuelven
   pageFlip.on('changeState', function (e) {
-    if (e.data === 'read' && pageFlip.getCurrentPageIndex() === 0 && flown) fly('in');
+    if (e.data === 'read' && pageFlip.getCurrentPageIndex() === 0 && flown && !unlocked) fly('in');
   });
 
   function fadeJump(index, after) {
