@@ -184,7 +184,7 @@
         duration: reduceMotion ? 1 : 1000,
         delay: reduceMotion ? 0 : idx * 110,
         easing: 'cubic-bezier(.65,0,.3,1)',
-        fill: 'forwards'
+        fill: 'both' // 'both': durante el retraso también queda en la posición inicial (si no, se ve un instante en el título)
       });
       return a.finished.then(function () {
         if (flown && toHeader) hEl.classList.remove('is-hidden');
