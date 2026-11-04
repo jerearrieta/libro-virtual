@@ -11,6 +11,7 @@ Sitio estático hecho con HTML, CSS y JavaScript, sin pasos de compilación.
 - Las hojas se pasan con efecto de papel real: con las flechas de las esquinas inferiores, arrastrando la esquina de la hoja, deslizando en el celular o con las flechas del teclado.
 - Al terminar, el cuaderno se cierra y muestra la contratapa (lisa); a los pocos segundos, o al tocarla, vuelve a la tapa.
 - Recién cuando se termina de leer el cuaderno aparece el botón **Índice** para ir directo a cualquier hoja. Al recargar la página vuelve a estar oculto.
+- Desde ese momento, los datos de la materia (Semiótica Aplicada, comisión, profesora y alumna) quedan fijos en el título aunque el cuaderno vuelva a la tapa.
 - **Ampliar** (o doble clic sobre una hoja) abre la hoja en grande para leerla cómodo.
 - En celulares se muestra una hoja por vez.
 
