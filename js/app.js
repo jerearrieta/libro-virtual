@@ -6,7 +6,7 @@
 
   /* ---------- Configuración ---------- */
   // La página 1 del PDF es la tapa; las hojas del cuaderno son las páginas 2 a 10.
-  var TOTAL_SHEETS = 9; // cantidad de hojas (sin contar la tapa)
+  var TOTAL_SHEETS = 18; // cantidad de hojas (sin contar la tapa)
   var RATIO = 1600 / 2263; // ancho / alto de cada hoja (A4)
 
   var pad = function (n) { return String(n).padStart(2, '0'); };
@@ -37,12 +37,21 @@
     page.innerHTML = '<div class="sheet"><img src="' + sheetSrc(i) + '" alt="Hoja ' + i + ' del cuaderno" decoding="async" draggable="false"></div>';
     bookEl.insertBefore(page, backCover);
   }
-  // Doble hoja: 0 tapa · 1 interior de tapa · 2..10 hojas · 11 contratapa (cantidad par, como pide StPageFlip)
-  // Una hoja (celular): se quita el interior de tapa → 0 tapa · 1..9 hojas · 10 contratapa
+  // Doble hoja: tapa · interior de tapa · hojas · [interior de contratapa] · contratapa.
+  // StPageFlip necesita una cantidad par: si hace falta se agrega el interior de contratapa (en blanco),
+  // así la última hoja queda sola y al pasarla se cierra el cuaderno.
+  // Una hoja (celular): se quitan los interiores → tapa · hojas · contratapa.
+  if ((TOTAL_SHEETS + 3) % 2 === 1) {
+    var innerBack = document.createElement('div');
+    innerBack.className = 'page page--inner page--inner-back';
+    innerBack.dataset.density = 'hard';
+    innerBack.innerHTML = '<div class="inner"></div>';
+    bookEl.insertBefore(innerBack, backCover);
+  }
   var allPages = Array.prototype.slice.call(bookEl.querySelectorAll('.page'));
   var loadedPortrait = false;
   function pagesFor(p) { return p ? allPages.filter(function (el) { return !el.classList.contains('page--inner'); }) : allPages; }
-  function lastIndex() { return loadedPortrait ? TOTAL_SHEETS + 1 : TOTAL_SHEETS + 2; }
+  function lastIndex() { return pagesFor(loadedPortrait).length - 1; }
   function sheetToIndex(n) { return loadedPortrait ? n : n + 1; }
 
   /* ---------- Tamaño del libro (que entre en pantalla) ---------- */
